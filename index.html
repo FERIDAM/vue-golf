@@ -34,7 +34,7 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 0.2rem 5%;
+            padding: 0.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -49,12 +49,8 @@
         }
 
         .logo {
-            color: var(--dark-green);
             cursor: pointer;
             transition: transform 0.3s ease;
-        }
-        .logo img {
-            width: 15%;
         }
 
         .logo:hover {
@@ -131,16 +127,7 @@
             }
         }
 
-        /* Parallax Background */
-        .parallax-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--dark-green) 0%, var(--medium-green) 100%);
-            z-index: 0;
-        }
-
-        /* Hero Section - Page 1 */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -404,12 +391,23 @@
             }
         }
 
-        /* About Section - Page 2 */
-        .about {
-            min-height: 100vh;
-            padding: 6rem 5% 4rem;
-            background: var(--white);
+        /* Section Styles */
+        .section {
+            padding: 6rem 5%;
             position: relative;
+        }
+
+        .section-light {
+            background: var(--white);
+        }
+
+        .section-gray {
+            background: linear-gradient(to bottom, #f8f8f8 0%, var(--white) 100%);
+        }
+
+        .section-dark {
+            background: var(--dark-green);
+            color: var(--white);
         }
 
         .section-title {
@@ -422,6 +420,10 @@
             display: inline-block;
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        .section-dark .section-title {
+            color: var(--white);
         }
 
         .section-title::after {
@@ -446,15 +448,20 @@
             margin-right: auto;
         }
 
-        .principles-grid {
+        .section-dark .section-subtitle {
+            color: var(--gray);
+        }
+
+        /* Features Grid */
+        .features-grid {
             max-width: 1200px;
-            margin: 0 auto 5rem;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
         }
 
-        .principle-card {
+        .feature-card {
             background: var(--white);
             padding: 2.5rem;
             border-radius: 16px;
@@ -464,7 +471,7 @@
             overflow: hidden;
         }
 
-        .principle-card::before {
+        .feature-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -476,17 +483,17 @@
             transition: opacity 0.4s;
         }
 
-        .principle-card:hover::before {
+        .feature-card:hover::before {
             opacity: 0.1;
         }
 
-        .principle-card:hover {
+        .feature-card:hover {
             border-color: var(--neon-yellow);
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .principle-icon {
+        .feature-icon {
             width: 80px;
             height: 80px;
             background: var(--dark-green);
@@ -501,12 +508,12 @@
             transition: all 0.4s;
         }
 
-        .principle-card:hover .principle-icon {
+        .feature-card:hover .feature-icon {
             background: var(--neon-yellow);
             transform: rotateY(360deg);
         }
 
-        .principle-card h3 {
+        .feature-card h3 {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--dark-green);
@@ -515,14 +522,15 @@
             z-index: 1;
         }
 
-        .principle-card p {
+        .feature-card p {
             color: var(--medium-green);
             font-size: 1.1rem;
             position: relative;
             z-index: 1;
         }
 
-        .feature-showcase {
+        /* Two Column Layout */
+        .two-column {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
@@ -531,9 +539,9 @@
             align-items: center;
         }
 
-        .feature-image {
-            background-image: url(media/original-73c8c76bbcc4819dc6035dd32aef66d3.webp);
-            background-size: contain;
+        .column-image {
+            background-image: url(/media/original-73c8c76bbcc4819dc6035dd32aef66d3.webp);
+            background-size: cover;
             border-radius: 16px;
             height: 400px;
             display: flex;
@@ -548,23 +556,33 @@
             transition: transform 0.4s;
         }
 
-        .feature-image:hover {
+        .column-image:hover {
             transform: scale(1.02);
         }
 
-        .feature-text h3 {
+        .column-text h3 {
             font-size: 2rem;
             font-weight: 700;
             color: var(--dark-green);
             margin-bottom: 1.5rem;
         }
 
-        .feature-text ul {
+        .section-dark .column-text h3 {
+            color: var(--white);
+        }
+
+        .column-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .column-text ul {
             list-style: none;
             margin-top: 1.5rem;
         }
 
-        .feature-text li {
+        .column-text li {
             padding: 0.8rem 0;
             padding-left: 2rem;
             position: relative;
@@ -573,12 +591,20 @@
             transition: all 0.3s;
         }
 
-        .feature-text li:hover {
+        .section-dark .column-text li {
+            color: var(--gray);
+        }
+
+        .column-text li:hover {
             padding-left: 2.5rem;
             color: var(--dark-green);
         }
 
-        .feature-text li::before {
+        .section-dark .column-text li:hover {
+            color: var(--white);
+        }
+
+        .column-text li::before {
             content: '✓';
             position: absolute;
             left: 0;
@@ -588,111 +614,14 @@
             transition: transform 0.3s;
         }
 
-        .feature-text li:hover::before {
+        .column-text li:hover::before {
             transform: scale(1.3);
         }
 
-        /* Benefits Section - Page 3 */
-        .benefits {
-            min-height: 100vh;
-            padding: 6rem 5% 4rem;
-            background: linear-gradient(to bottom, #f8f8f8 0%, var(--white) 100%);
-            position: relative;
-        }
-
-        .benefits-container {
+        /* Stats Section */
+        .stats-grid {
             max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefits-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 4rem;
-        }
-
-        .benefit-column {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-column::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(229, 255, 20, 0.1), transparent);
-            transition: left 0.6s;
-        }
-
-        .benefit-column:hover::before {
-            left: 100%;
-        }
-
-        .benefit-column:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .benefit-column h3 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--dark-green);
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--neon-yellow);
-            position: relative;
-        }
-
-        .benefit-item {
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .benefit-item:nth-child(2) { animation-delay: 0.1s; }
-        .benefit-item:nth-child(3) { animation-delay: 0.2s; }
-        .benefit-item:nth-child(4) { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .benefit-item h4 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--medium-green);
-            margin-bottom: 0.8rem;
-            transition: color 0.3s;
-        }
-
-        .benefit-column:hover .benefit-item h4 {
-            color: var(--dark-green);
-        }
-
-        .benefit-item p {
-            color: var(--medium-green);
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        .stats-section {
-            margin-top: 5rem;
+            margin: 4rem auto 0;
             padding: 3rem;
             background: var(--dark-green);
             border-radius: 16px;
@@ -704,7 +633,7 @@
             overflow: hidden;
         }
 
-        .stats-section::before {
+        .stats-grid::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -746,58 +675,92 @@
             font-size: 1.1rem;
         }
 
-        .visual-grid {
-            margin-top: 4rem;
+        /* Testimonials */
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
         }
 
-        .visual-item1, .visual-item2, .visual-item3 {
-            background-position: center;
+        .testimonial-card {
+            background: var(--white);
+            padding: 3rem;
             border-radius: 16px;
-            height: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--neon-yellow);
+            opacity: 0.3;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: var(--medium-green);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--neon-yellow);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--medium-green);
-            text-align: center;
-            padding: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
             font-size: 0.95rem;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s;
+            color: var(--medium-green);
         }
 
-        .visual-item1 {
-            background-image: url(/media/bigstock-modern-golf-man-with-smart-pho-65229274.jpg);
-            background-size: cover;
-        }
-        .visual-item2 {
-            background-image: url(/media/closeup-golf-green-with-flag-sunset-background_681147-26943.jpg);
-            background-size: cover;
-        }
-        .visual-item3 {
-            background-image: url(/media/turkey-belek-february-24-2020-600nw-2571468725.webp);
-            background-size: cover;
-        }
-
-        .visual-item1:hover, .visual-item2:hover, .visual-item3:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Contact Section - Page 4 */
-        .contact {
-            min-height: 100vh;
-            padding: 6rem 5% 4rem;
-            background: var(--dark-green);
-            color: var(--white);
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--medium-green) 100%);
+            padding: 5rem 5%;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .contact::before {
+        .cta-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -810,139 +773,24 @@
             z-index: 0;
         }
 
-        .contact .section-title {
-            color: var(--white);
-        }
-
-        .contact .section-subtitle {
-            color: var(--gray);
-        }
-
-        .contact-container {
-            max-width: 1200px;
+        .cta-content {
+            max-width: 800px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            margin-top: 4rem;
             position: relative;
             z-index: 1;
         }
 
-        .contact-info h3 {
-            font-size: 2rem;
+        .cta-content h2 {
+            font-size: 3rem;
             font-weight: 700;
-            color: var(--neon-yellow);
-            margin-bottom: 2rem;
-        }
-
-        .contact-info p {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .contact-details {
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-            transition: transform 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contact-item span {
-            color: var(--neon-yellow);
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        .contact-form {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .form-group {
+            color: var(--white);
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            display: block;
-            color: var(--dark-green);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--gray);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--neon-yellow);
-            box-shadow: 0 0 0 3px rgba(229, 255, 20, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-button {
-            width: 100%;
-            background: var(--neon-yellow);
-            color: var(--dark-green);
-            padding: 1.2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .submit-button:hover::before {
-            width: 400px;
-            height: 400px;
-        }
-
-        .submit-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(229, 255, 20, 0.4);
+        .cta-content p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
         }
 
         /* Footer */
@@ -1137,39 +985,6 @@
             color: var(--neon-yellow);
         }
 
-        @media (max-width: 968px) {
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .footer-brand,
-            .footer-section {
-                text-align: center;
-            }
-
-            .footer-social {
-                justify-content: center;
-            }
-
-            .footer-links a {
-                padding-left: 0;
-            }
-
-            .footer-links a::before {
-                display: none;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hashtags {
-                justify-content: center;
-            }
-        }
-
         /* Scroll to Top Button */
         .scroll-top {
             position: fixed;
@@ -1239,18 +1054,142 @@
             }
         }
 
+        /* Contact Form */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--neon-yellow);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-item span {
+            color: var(--neon-yellow);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark-green);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-yellow);
+            box-shadow: 0 0 0 3px rgba(229, 255, 20, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--neon-yellow);
+            color: var(--dark-green);
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(229, 255, 20, 0.4);
+        }
+
         /* Responsive Design */
         @media (max-width: 968px) {
             .hero-content,
-            .feature-showcase,
-            .benefits-split,
+            .two-column,
             .contact-container {
                 grid-template-columns: 1fr;
             }
 
-            .principles-grid,
-            .visual-grid,
-            .stats-section {
+            .features-grid,
+            .testimonials-grid,
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1289,6 +1228,37 @@
             .hamburger.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(7px, -7px);
             }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-brand,
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-links a {
+                padding-left: 0;
+            }
+
+            .footer-links a::before {
+                display: none;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hashtags {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1304,12 +1274,12 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="logo" onclick="showPage('home')">
-            <img src="/media/logo.jpg" alt="logo">
+            <img src="media/logo.jpg" alt="" style="width: 12%;">
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
-            <li><a onclick="showPage('about')" data-page="about">About</a></li>
-            <li><a onclick="showPage('benefits')" data-page="benefits">Benefits</a></li>
+            <li><a onclick="showPage('sales')" data-page="sales">Sales</a></li>
+            <li><a onclick="showPage('product')" data-page="product">Product</a></li>
             <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
         </ul>
         <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -1319,8 +1289,9 @@
         </div>
     </nav>
 
-    <!-- Page 1: Home -->
+    <!-- HOME PAGE -->
     <div id="home" class="page active">
+        <!-- Hero Section -->
         <section class="hero">
             <div class="floating-elements">
                 <div class="floating-circle circle-1"></div>
@@ -1340,11 +1311,84 @@
                 <span></span>
             </div>
         </section>
+
+        <!-- What is VueGolf Section -->
+        <section class="section section-light">
+            <h2 class="section-title">What is VueGolf?</h2>
+            <p class="section-subtitle">VueGolf is the digital companion that helps golfers understand and prepare for any course — turning insight into confidence and confidence into performance.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Player-First Intelligence</h3>
+                    <p>Built entirely around the golfer's experience. Every feature helps players prepare smarter, play better, and feel more confident on the course.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>Precision Visuals</h3>
+                    <p>Professional drone photography combined with advanced course mapping creates visually stunning, interactive experiences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Course Familiarity</h3>
+                    <p>Study terrain, hazards, and green complexes from every angle. Arrive at the first tee feeling ready and confident.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why VueGolf Section -->
+        <section class="section section-gray">
+            <h2 class="section-title">Why VueGolf?</h2>
+            <p class="section-subtitle">When preparation meets precision, performance follows.</p>
+            
+            <div class="two-column">
+                <div class="column-text">
+                    <h3>Built for Golfers. Backed by Clubs.</h3>
+                    <p>VueGolf bridges the gap between performance and presentation — helping clubs look exceptional, and golfers play their best.</p>
+                    <ul>
+                        <li>Confidence through preparation</li>
+                        <li>Enhanced course understanding</li>
+                        <li>Better strategic planning</li>
+                        <li>Improved performance</li>
+                        <li>Memorable playing experience</li>
+                    </ul>
+                </div>
+                <div class="column-image"></div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section section-light">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>100%</h4>
+                    <p>Player-First Approach</p>
+                </div>
+                <div class="stat-item">
+                    <h4>360°</h4>
+                    <p>Course Visualization</p>
+                </div>
+                <div class="stat-item">
+                    <h4>Modern</h4>
+                    <p>Digital Standard</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Course?</h2>
+                <p>Experience VueGolf for yourself. See how your course can look, feel, and perform when presented through VueGolf's digital lens.</p>
+                <a onclick="showPage('contact')" class="cta-button">Get Started with VueGolf</a>
+            </div>
+        </section>
+
         <footer>
             <div class="footer-content">
                 <div class="footer-top">
                     <div class="footer-brand">
-                        <div class="logo">VUEGOLF</div>
+                        <div class="logo"><b style="font-weight: 900;">VUE</b>GOLF</div>
                         <p class="footer-tagline">Built for golfers. Backed by clubs. Powered by VueGolf.</p>
                         <p class="footer-tagline">Digital precision meets human performance. Know the course. Play your best.</p>
                         <div class="footer-social">
@@ -1359,8 +1403,8 @@
                         <h4>Quick Links</h4>
                         <div class="footer-links">
                             <a onclick="showPage('home')">Home</a>
-                            <a onclick="showPage('about')">About Us</a>
-                            <a onclick="showPage('benefits')">Benefits</a>
+                            <a onclick="showPage('sales')">Sales</a>
+                            <a onclick="showPage('product')">Product</a>
                             <a onclick="showPage('contact')">Contact</a>
                         </div>
                     </div>
@@ -1398,171 +1442,261 @@
         </footer>
     </div>
 
-    <!-- Page 2: About -->
-    <div id="about" class="page">
-        <section class="about">
-            <h2 class="section-title">Player-First Philosophy</h2>
-            <p class="section-subtitle">VueGolf is built entirely around the golfer's experience. Every feature, visual, and interaction is designed to help players prepare smarter, play better, and feel more confident on the course.</p>
+    <!-- SALES PAGE -->
+    <div id="sales" class="page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="floating-elements">
+                <div class="floating-circle circle-1"></div>
+                <div class="floating-circle circle-2"></div>
+                <div class="floating-circle circle-3"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Stand Out as a Modern, Player-First Club</h1>
+                    <p class="tagline">Powered by VueGolf</p>
+                    <p>VueGolf enhances your club's reputation by helping golfers prepare, perform, and return. When golfers see VueGolf, they know you care about their experience.</p>
+                    <a onclick="showPage('contact')" class="cta-button">Book Your Demo</a>
+                </div>
+                <div class="hero-image" style="background-image: url(/media/1719239626378.webp);"></div>
+            </div>
+        </section>
 
-            <div class="principles-grid">
-                <div class="principle-card">
-                    <div class="principle-icon">🎯</div>
+        <!-- Benefits for Clubs Section -->
+        <section class="section section-light">
+            <h2 class="section-title">Why Golf Clubs Choose VueGolf</h2>
+            <p class="section-subtitle">Digital innovation that feels simple, looks premium, and works effortlessly for your players.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Enhanced Reputation</h3>
+                    <p>Stand out as a modern, player-first club. When golfers see VueGolf, they know you invest in their experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Marketing Impact</h3>
+                    <p>Showcase your course with stunning visuals and professional presentation that attracts new members and visitors.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Player Loyalty</h3>
+                    <p>Golfers remember great rounds. VueGolf helps make them happen at your course, building lasting loyalty.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Signal Section -->
+        <section class="section section-dark">
+            <h2 class="section-title">A Mark of Quality</h2>
+            <p class="section-subtitle">When golfers see VueGolf, they know the club cares about their experience — detail, precision, and preparation built in.</p>
+            
+            <div class="two-column">
+                <div class="column-image" style="background-image: url(media/bigstock-modern-golf-man-with-smart-pho-65229274.jpg);"></div>
+                <div class="column-text">
+                    <h3>The VueGolf Difference</h3>
+                    <p>Like "Powered by TrackMan" or "Hosted by Foresight", VueGolf becomes a badge of professionalism for your club.</p>
+                    <ul>
+                        <li>Trust and prestige for your brand</li>
+                        <li>Competitive edge in your market</li>
+                        <li>Boost bookings and satisfaction</li>
+                        <li>Modern digital standard</li>
+                        <li>Player confidence and preparation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI Section -->
+        <section class="section section-gray">
+            <h2 class="section-title">The Business Value</h2>
+            <p class="section-subtitle">VueGolf helps golf clubs strengthen reputation, attract new members, and deliver added value to their players.</p>
+            
+            <div class="two-column">
+                <div class="column-text">
+                    <h3>Measurable Impact</h3>
+                    <p>Golfers remember great rounds. VueGolf helps make them happen at your course — and they'll talk about it.</p>
+                    <ul>
+                        <li>Increased member satisfaction</li>
+                        <li>Higher booking rates</li>
+                        <li>Positive word of mouth</li>
+                        <li>Enhanced marketing assets</li>
+                        <li>Modernized club image</li>
+                    </ul>
+                </div>
+                <div class="column-image" style="background-image: url(media/Sunset-at-Golf-Course-in-Abacoa-Florida.jpg);"></div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Let's Build Your Digital Showcase</h2>
+                <p>Book a demo — we'll showcase how VueGolf transforms your course presentation and enhances your players' preparation.</p>
+                <a onclick="showPage('contact')" class="cta-button">Schedule Your Demo</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <div class="logo"><b style="font-weight: 900;">VUE</b>GOLF</div>
+                        <p class="footer-tagline">Built for golfers. Backed by clubs. Powered by VueGolf.</p>
+                        <p class="footer-tagline">Digital precision meets human performance. Know the course. Play your best.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon">📘</a>
+                            <a href="#" class="social-icon">📸</a>
+                            <a href="#" class="social-icon">🐦</a>
+                            <a href="#" class="social-icon">💼</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <div class="footer-links">
+                            <a onclick="showPage('home')">Home</a>
+                            <a onclick="showPage('sales')">Sales</a>
+                            <a onclick="showPage('product')">Product</a>
+                            <a onclick="showPage('contact')">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <div class="footer-contact-item">
+                            <span>📧</span>
+                            <span>hello@vuegolf.com</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span>🌐</span>
+                            <span>www.vuegolf.com</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span>📍</span>
+                            <span>Portugal</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p class="footer-copyright">© 2024 VueGolf. All rights reserved.</p>
+                    <div class="hashtags">
+                        <span>#VueGolf</span>
+                        <span>#KnowTheCourse</span>
+                        <span>#DigitalGolf</span>
+                        <span>#PlaySmarter</span>
+                        <span>#GolfPortugal</span>
+                        <span>#AlgarveGolf</span>
+                        <span>#LisbonGolf</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- PRODUCT PAGE -->
+    <div id="product" class="page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="floating-elements">
+                <div class="floating-circle circle-1"></div>
+                <div class="floating-circle circle-2"></div>
+                <div class="floating-circle circle-3"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Innovation Meets Tradition</h1>
+                    <p class="tagline">Where technology meets tradition</p>
+                    <p>VueGolf combines professional drone photography with advanced course mapping to create visually stunning, interactive experiences that transform how courses are presented, understood, and played.</p>
+                    <a onclick="showPage('contact')" class="cta-button">See It In Action</a>
+                </div>
+                <div class="hero-image" style="background-size: contain; background-image: url(media/ChatGPT\ Image\ Nov\ 19\,\ 2025\,\ 03_43_15\ PM.png);"></div>
+            </div>
+        </section>
+
+        <!-- Brand Principles Section -->
+        <section class="section section-light">
+            <h2 class="section-title">Built on Three Principles</h2>
+            <p class="section-subtitle">Every element of VueGolf reflects the same standards of precision and professionalism that golfers expect on the course.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
                     <h3>Clarity</h3>
                     <p>Every detail should feel simple, accurate, and effortless to understand. VueGolf removes confusion and presents information that players and clubs can instantly trust.</p>
                 </div>
-                <div class="principle-card">
-                    <div class="principle-icon">⚡</div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
                     <h3>Innovation</h3>
                     <p>VueGolf represents progress in golf presentation — combining new technology, creative design, and fresh thinking to set a modern standard for the sport.</p>
                 </div>
-                <div class="principle-card">
-                    <div class="principle-icon">🏌️</div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏌️</div>
                     <h3>Player Focus</h3>
                     <p>Every decision starts with the golfer's experience. VueGolf helps clubs put their players first by giving them tools that build confidence, insight, and preparation.</p>
                 </div>
             </div>
+        </section>
 
-            <div class="feature-showcase">
-                <div class="feature-image"></div>
-                <div class="feature-text">
-                    <h3>Precision Visuals & Digital Mapping</h3>
-                    <p>VueGolf combines professional drone photography with advanced course mapping to create visually stunning, interactive experiences.</p>
+        <!-- Technology Section -->
+        <section class="section section-dark">
+            <h2 class="section-title">Precision Visuals & Digital Mapping</h2>
+            <p class="section-subtitle">Behind VueGolf's visuals sits smart, intuitive technology that's easy for clubs to integrate and effortless for golfers to use.</p>
+            
+            <div class="two-column">
+                <div class="column-text">
+                    <h3>Advanced Technology, Simple Delivery</h3>
+                    <p>Professional drone photography combined with advanced course mapping creates visually stunning, interactive experiences.</p>
                     <ul>
                         <li>Professional drone photography</li>
                         <li>Advanced digital mapping</li>
                         <li>Interactive hole-by-hole visualization</li>
                         <li>Real-time course information</li>
                         <li>Strategic planning tools</li>
+                        <li>Multi-device compatibility</li>
+                    </ul>
+                </div>
+                <div class="column-image" style="background-image: url(media/drone-technology-golf-course.jpg); background-size: cover;"></div>
+            </div>
+        </section>
+
+        <!-- Features Deep Dive -->
+        <section class="section section-gray">
+            <h2 class="section-title">Everything You Need</h2>
+            <p class="section-subtitle">It feels premium and tech-forward — without ever being complicated.</p>
+            
+            <div class="two-column">
+                <div class="column-image"></div>
+                <div class="column-text">
+                    <h3>Designed for Performance</h3>
+                    <p>Every detail matters — from the tee box to the green. VueGolf brings that detail to life.</p>
+                    <ul>
+                        <li>Hole-by-hole breakdowns</li>
+                        <li>Elevation and yardage data</li>
+                        <li>Hazard identification</li>
+                        <li>Green reading assistance</li>
+                        <li>Course conditions updates</li>
+                        <li>Personalized recommendations</li>
                     </ul>
                 </div>
             </div>
         </section>
-<footer>
-            <div class="footer-content">
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <div class="logo">VUEGOLF</div>
-                        <p class="footer-tagline">Built for golfers. Backed by clubs. Powered by VueGolf.</p>
-                        <p class="footer-tagline">Digital precision meets human performance. Know the course. Play your best.</p>
-                        <div class="footer-social">
-                            <a href="#" class="social-icon">📘</a>
-                            <a href="#" class="social-icon">📸</a>
-                            <a href="#" class="social-icon">🐦</a>
-                            <a href="#" class="social-icon">💼</a>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <h4>Quick Links</h4>
-                        <div class="footer-links">
-                            <a onclick="showPage('home')">Home</a>
-                            <a onclick="showPage('about')">About Us</a>
-                            <a onclick="showPage('benefits')">Benefits</a>
-                            <a onclick="showPage('contact')">Contact</a>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <h4>Contact Info</h4>
-                        <div class="footer-contact-item">
-                            <span>📧</span>
-                            <span>hello@vuegolf.com</span>
-                        </div>
-                        <div class="footer-contact-item">
-                            <span>🌐</span>
-                            <span>www.vuegolf.com</span>
-                        </div>
-                        <div class="footer-contact-item">
-                            <span>📍</span>
-                            <span>Portugal</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-bottom">
-                    <p class="footer-copyright">© 2024 VueGolf. All rights reserved.</p>
-                    <div class="hashtags">
-                        <span>#VueGolf</span>
-                        <span>#KnowTheCourse</span>
-                        <span>#DigitalGolf</span>
-                        <span>#PlaySmarter</span>
-                        <span>#GolfPortugal</span>
-                        <span>#AlgarveGolf</span>
-                        <span>#LisbonGolf</span>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
 
-    <!-- Page 3: Benefits -->
-    <div id="benefits" class="page">
-        <section class="benefits">
-            <h2 class="section-title">Built for Golfers. Backed by Clubs.</h2>
-            <p class="section-subtitle">VueGolf bridges the gap between performance and presentation — helping clubs look exceptional, and golfers play their best.</p>
-
-            <div class="benefits-container">
-                <div class="benefits-split">
-                    <div class="benefit-column">
-                        <h3>For Golfers</h3>
-                        <div class="benefit-item">
-                            <h4>Confidence Through Preparation</h4>
-                            <p>Understand every course in greater detail before you play. Know the layout, distances, and strategic options for every hole.</p>
-                        </div>
-                        <div class="benefit-item">
-                            <h4>Course Familiarity</h4>
-                            <p>Study the terrain, hazards, and green complexes from every angle. Arrive at the first tee feeling ready and confident.</p>
-                        </div>
-                        <div class="benefit-item">
-                            <h4>Better Performance</h4>
-                            <p>When preparation meets precision, performance follows. Play smarter rounds and lower your scores.</p>
-                        </div>
-                    </div>
-
-                    <div class="benefit-column">
-                        <h3>For Golf Clubs</h3>
-                        <div class="benefit-item">
-                            <h4>Enhanced Reputation</h4>
-                            <p>Stand out as a modern, player-first club. When golfers see VueGolf, they know you care about their experience.</p>
-                        </div>
-                        <div class="benefit-item">
-                            <h4>Marketing Impact</h4>
-                            <p>Showcase your course with stunning visuals and professional presentation that attracts new members and visitors.</p>
-                        </div>
-                        <div class="benefit-item">
-                            <h4>Player Loyalty</h4>
-                            <p>Golfers remember great rounds. VueGolf helps make them happen at your course, building lasting loyalty and positive word of mouth.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="stats-section">
-                    <div class="stat-item">
-                        <h4>100%</h4>
-                        <p>Player-First Approach</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>360°</h4>
-                        <p>Course Visualization</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>Modern</h4>
-                        <p>Digital Standard</p>
-                    </div>
-                </div>
-
-                <div class="visual-grid">
-                    <div class="visual-item1"></div>
-                    <div class="visual-item2"></div>
-                    <div class="visual-item3"></div>
-                </div>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Experience the Platform</h2>
+                <p>See how VueGolf transforms course presentation and player preparation with cutting-edge technology that's simple to use.</p>
+                <a onclick="showPage('contact')" class="cta-button">Request a Demo</a>
             </div>
         </section>
+
         <footer>
             <div class="footer-content">
                 <div class="footer-top">
                     <div class="footer-brand">
-                        <div class="logo">VUEGOLF</div>
+                        <div class="logo"><b style="font-weight: 900;">VUE</b>GOLF</div>
                         <p class="footer-tagline">Built for golfers. Backed by clubs. Powered by VueGolf.</p>
                         <p class="footer-tagline">Digital precision meets human performance. Know the course. Play your best.</p>
                         <div class="footer-social">
@@ -1577,8 +1711,8 @@
                         <h4>Quick Links</h4>
                         <div class="footer-links">
                             <a onclick="showPage('home')">Home</a>
-                            <a onclick="showPage('about')">About Us</a>
-                            <a onclick="showPage('benefits')">Benefits</a>
+                            <a onclick="showPage('sales')">Sales</a>
+                            <a onclick="showPage('product')">Product</a>
                             <a onclick="showPage('contact')">Contact</a>
                         </div>
                     </div>
@@ -1616,60 +1750,66 @@
         </footer>
     </div>
 
-    <!-- Page 4: Contact -->
+    <!-- CONTACT PAGE -->
     <div id="contact" class="page">
-        <section class="contact">
-            <h2 class="section-title">Get Started with VueGolf</h2>
-            <p class="section-subtitle">Experience VueGolf for yourself. See how your course can look, feel, and perform when presented through VueGolf's digital lens.</p>
+        <section class="section section-dark" style="min-height: 100vh; display: flex; align-items: center;">
+            <div style="width: 100%; max-width: 1400px; margin: 0 auto;">
+                <h2 class="section-title">Get Started with VueGolf</h2>
+                <p class="section-subtitle">Experience VueGolf for yourself. See how your course can look, feel, and perform when presented through VueGolf's digital lens.</p>
 
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's Build Your Digital Showcase</h3>
-                    <p>Book a demo — we'll showcase how VueGolf transforms your course presentation and enhances your players' preparation.</p>
-                    <p>Ready to stand out as a modern, player-first club?</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <span>📧</span> hello@vuegolf.com
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Let's Build Your Digital Showcase</h3>
+                        <p>Book a demo — we'll showcase how VueGolf transforms your course presentation and enhances your players' preparation.</p>
+                        <p>Ready to stand out as a modern, player-first club?</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span>📧</span> hello@vuegolf.com
+                            </div>
+                            <div class="contact-item">
+                                <span>🌐</span> www.vuegolf.com
+                            </div>
+                            <div class="contact-item">
+                                <span>📍</span> Portugal
+                            </div>
                         </div>
-                        <div class="contact-item">
-                            <span>🌐</span> www.vuegolf.com
+
+                        <div style="height: 60vh; margin-top: 3rem; padding: 2rem; background-image: url(/media/Sunset-at-Golf-Course-in-Abacoa-Florida.jpg); background-size: cover; border-radius: 8px;"></div>
+                    </div>
+
+                    <div class="contact-form">
+                        <div class="form-group">
+                            <label>Club Name *</label>
+                            <input type="text" placeholder="Your Golf Club" required>
                         </div>
+                        <div class="form-group">
+                            <label>Your Name *</label>
+                            <input type="text" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" placeholder="you@golfclub.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" placeholder="+351 XXX XXX XXX">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Tell us about your club and how we can help..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Book Your Demo</button>
                     </div>
-
-                    <div style="margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.1); border-radius: 8px; background-image: url(media/Sunset-at-Golf-Course-in-Abacoa-Florida.jpg); background-size: cover;"></div>
-                </div>
-
-                <div class="contact-form">
-                    <div class="form-group">
-                        <label>Club Name *</label>
-                        <input type="text" placeholder="Your Golf Club" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Name *</label>
-                        <input type="text" placeholder="John Smith" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email *</label>
-                        <input type="email" placeholder="you@golfclub.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="tel" placeholder="+351 XXX XXX XXX">
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea placeholder="Tell us about your club and how we can help..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Book Your Demo</button>
                 </div>
             </div>
         </section>
-<footer>
+
+        <footer>
             <div class="footer-content">
                 <div class="footer-top">
                     <div class="footer-brand">
-                        <div class="logo">VUEGOLF</div>
+                        <div class="logo"><b style="font-weight: 900;">VUE</b>GOLF</div>
                         <p class="footer-tagline">Built for golfers. Backed by clubs. Powered by VueGolf.</p>
                         <p class="footer-tagline">Digital precision meets human performance. Know the course. Play your best.</p>
                         <div class="footer-social">
@@ -1684,8 +1824,8 @@
                         <h4>Quick Links</h4>
                         <div class="footer-links">
                             <a onclick="showPage('home')">Home</a>
-                            <a onclick="showPage('about')">About Us</a>
-                            <a onclick="showPage('benefits')">Benefits</a>
+                            <a onclick="showPage('sales')">Sales</a>
+                            <a onclick="showPage('product')">Product</a>
                             <a onclick="showPage('contact')">Contact</a>
                         </div>
                     </div>
@@ -1804,20 +1944,6 @@
             }
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
         // Form submission handler
         document.querySelectorAll('.contact-form').forEach(form => {
             form.addEventListener('submit', (e) => {
@@ -1843,11 +1969,25 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.principle-card, .benefit-column, .visual-item').forEach(el => {
+        document.querySelectorAll('.feature-card, .testimonial-card, .column-image, .column-text').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
